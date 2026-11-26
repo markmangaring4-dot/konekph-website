@@ -20,7 +20,6 @@
             flex-direction: column;
         }
 
-        /* ================= TOP WEBSITE NAVBAR ================= */
         header {
             background-color: #1e293b;
             border-bottom: 1px solid #334155;
@@ -99,51 +98,6 @@
 
         .hidden { display: none !important; }
 
-        /* ================= SOCIAL LOGIN BUTTONS ================= */
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .btn-social {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: none;
-        }
-
-        .btn-social:hover { opacity: 0.92; }
-        .btn-google { background-color: #ffffff; color: #1f2937; }
-        .btn-facebook { background-color: #1877f2; color: #ffffff; }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #64748b;
-            font-size: 0.8rem;
-            margin: 14px 0;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #334155;
-        }
-
-        .divider:not(:empty)::before { margin-right: 10px; }
-        .divider:not(:empty)::after { margin-left: 10px; }
-
-        /* ================= LANDING & AUTH SECTION ================= */
         .landing-hero {
             flex: 1;
             display: grid;
@@ -193,7 +147,7 @@
         }
 
         .auth-box h2 { margin-bottom: 6px; }
-        .auth-box p.sub { color: #94a3b8; font-size: 0.9rem; margin-bottom: 16px; }
+        .auth-box p.sub { color: #94a3b8; font-size: 0.9rem; margin-bottom: 18px; }
 
         .form-group { margin-bottom: 12px; }
         label { display: block; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 5px; }
@@ -261,7 +215,6 @@
         .error { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5; }
         .success { background: rgba(34, 197, 94, 0.2); border: 1px solid #22c55e; color: #86efac; }
 
-        /* ================= MAIN WEBSITE DASHBOARD ================= */
         .web-layout {
             display: grid;
             grid-template-columns: 295px 1fr;
@@ -318,30 +271,37 @@
             margin-bottom: 10px;
         }
 
-        .social-link-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #0f172a;
-            padding: 9px 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+        /* Search Bar Box */
+        .search-bar-box {
+            background: #1e293b;
             border: 1px solid #334155;
-        }
-
-        .status-pill {
-            font-size: 0.75rem;
-            padding: 3px 8px;
             border-radius: 12px;
-            font-weight: 600;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
-        .status-connected { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
-        .status-connect-btn { background: #334155; color: #fff; border: none; cursor: pointer; }
-        .status-connect-btn:hover { background: #0284c7; }
+        .search-input-wrap {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
 
-        /* FIND FRIENDS MATCHING BANNER (LITMATCH-STYLE) */
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            color: #94a3b8;
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .search-input-wrap input {
+            padding-left: 40px;
+        }
+
         .matching-hub {
             background: linear-gradient(135deg, rgba(2, 132, 199, 0.22), rgba(13, 148, 136, 0.22));
             border: 1px solid #0284c7;
@@ -391,7 +351,6 @@
 
         .match-avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Profiles Grid */
         .profiles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -439,18 +398,6 @@
 
         .member-banner img { width: 100%; height: 100%; object-fit: cover; }
 
-        .verified-social-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(15, 23, 42, 0.85);
-            color: #38bdf8;
-            font-size: 0.72rem;
-            padding: 4px 9px;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-
         .member-body {
             padding: 18px;
             flex: 1;
@@ -473,7 +420,6 @@
             font-size: 0.8rem;
         }
 
-        /* ================= MODALS (CHAT, VOICE CALL & SOCIAL) ================= */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -530,7 +476,6 @@
             gap: 10px;
         }
 
-        /* Voice Call Modal Screen */
         .call-screen {
             padding: 35px 25px;
             text-align: center;
@@ -606,7 +551,6 @@
 </head>
 <body>
 
-    <!-- WEBSITE HEADER -->
     <header>
         <a class="logo" href="#">KonekPH</a>
         <div class="nav-links" id="guest-nav">
@@ -620,37 +564,21 @@
         </div>
     </header>
 
-    <!-- ================= 1. LANDING PAGE (BAGO MAG-LOGIN) ================= -->
     <main id="landing-page" class="landing-hero">
         <div class="hero-text">
             <h1>Maghanap ng Bagong Kaibigan, Ka-Chat, at Ka-Call sa <span>KonekPH</span></h1>
-            <p>Maghanap ng bagong kaibigan ayon sa hilig, makipag-chat nang direkta, at mag-voice call sa loob ng komunidad. Ikonekta ang iyong Google o Facebook account para makapagsimula.</p>
+            <p>Maghanap ng bagong kaibigan ayon sa hilig, makipag-chat nang direkta, at mag-voice call sa loob ng komunidad. Gumawa ng profile at magsimulang kumonekta.</p>
             <div class="hero-stats">
                 <div class="stat"><h3>Find Friend</h3><p>Interest & Random Match</p></div>
+                <div class="stat"><h3>Search & Filter</h3><p>Mabilis na Paghahanap</p></div>
                 <div class="stat"><h3>Chat & Call</h3><p>Direct Friend Connect</p></div>
-                <div class="stat"><h3>Social Link</h3><p>Google & FB Ready</p></div>
             </div>
         </div>
 
-        <!-- Login / Register Form Box -->
         <div class="auth-box">
-            <!-- REGISTER FORM -->
             <div id="register-form-box">
                 <h2>Gumawa ng Friend Profile</h2>
-                <p class="sub">Magpatuloy gamit ang social account o email</p>
-
-                <div class="social-buttons">
-                    <button type="button" class="btn-social btn-google" onclick="openSocialModal('Google')">
-                        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.3 0 6.08-1.09 8.1-2.96l-3.88-3.05c-1.1.74-2.51 1.18-4.22 1.18-3.25 0-6-2.19-6.98-5.14H1.01v3.14C3.05 21.2 7.24 24 12 24Z"/><path fill="#FBBC05" d="M5.02 14.03c-.25-.74-.39-1.54-.39-2.36 0-.82.14-1.62.39-2.36V6.17H1.01C.37 7.45 0 8.88 0 10.37s.37 2.92 1.01 4.2l4.01-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.79 0 3.41.62 4.68 1.82l3.51-3.51C18.07 1.19 15.3 0 12 0 7.24 0 3.05 2.8 1.01 6.83l4.01 3.14c.98-2.95 3.73-5.22 6.98-5.22Z"/></svg>
-                        Ikonekta ang Google Account
-                    </button>
-                    <button type="button" class="btn-social btn-facebook" onclick="openSocialModal('Facebook')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        Ikonekta ang Facebook Account
-                    </button>
-                </div>
-
-                <div class="divider">O MAG-REGISTER GAMIT ANG EMAIL</div>
+                <p class="sub">Ipakilala ang sarili at ang mga hilig mo</p>
                 <div id="reg-msg" class="msg-box"></div>
 
                 <form onsubmit="handleRegister(event)">
@@ -716,23 +644,9 @@
                 </p>
             </div>
 
-            <!-- LOGIN FORM -->
             <div id="login-form-box" class="hidden">
                 <h2>Mag-Login sa Account</h2>
                 <p class="sub">Maligayang pagbabalik sa KonekPH</p>
-
-                <div class="social-buttons">
-                    <button type="button" class="btn-social btn-google" onclick="openSocialModal('Google')">
-                        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.3 0 6.08-1.09 8.1-2.96l-3.88-3.05c-1.1.74-2.51 1.18-4.22 1.18-3.25 0-6-2.19-6.98-5.14H1.01v3.14C3.05 21.2 7.24 24 12 24Z"/><path fill="#FBBC05" d="M5.02 14.03c-.25-.74-.39-1.54-.39-2.36 0-.82.14-1.62.39-2.36V6.17H1.01C.37 7.45 0 8.88 0 10.37s.37 2.92 1.01 4.2l4.01-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.79 0 3.41.62 4.68 1.82l3.51-3.51C18.07 1.19 15.3 0 12 0 7.24 0 3.05 2.8 1.01 6.83l4.01 3.14c.98-2.95 3.73-5.22 6.98-5.22Z"/></svg>
-                        Mag-Login gamit ang Google
-                    </button>
-                    <button type="button" class="btn-social btn-facebook" onclick="openSocialModal('Facebook')">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        Mag-Login gamit ang Facebook
-                    </button>
-                </div>
-
-                <div class="divider">O GAMITIN ANG EMAIL AT PASSWORD</div>
                 <div id="login-msg" class="msg-box"></div>
 
                 <form onsubmit="handleLogin(event)">
@@ -753,10 +667,7 @@
         </div>
     </main>
 
-    <!-- ================= 2. MEMBER WEBSITE DASHBOARD ================= -->
     <div id="member-dashboard" class="web-layout hidden">
-        
-        <!-- Left Sidebar -->
         <aside class="sidebar">
             <div class="panel" style="text-align: center;">
                 <h3 style="text-align: left;">Aking Profile</h3>
@@ -771,18 +682,6 @@
                 <p id="dash-city" style="color: #94a3b8; font-size: 0.85rem; margin: 4px 0 8px;">📍 Manila</p>
                 <div><span class="interest-badge" id="dash-interest">Tech & Coding</span></div>
                 <p id="dash-bio" style="font-size: 0.88rem; color: #cbd5e1; font-style: italic;">"Bio ko..."</p>
-            </div>
-
-            <div class="panel">
-                <h3>Connected Accounts</h3>
-                <div class="social-link-row">
-                    <span>🔵 Google</span>
-                    <span id="google-link-status"></span>
-                </div>
-                <div class="social-link-row">
-                    <span>🔷 Facebook</span>
-                    <span id="fb-link-status"></span>
-                </div>
             </div>
 
             <div class="panel">
@@ -813,9 +712,16 @@
             </div>
         </aside>
 
-        <!-- Main Right Content -->
         <section>
-            <!-- LITMATCH-STYLE FIND FRIENDS MATCHING HUB -->
+            <!-- SEARCH BAR -->
+            <div class="search-bar-box">
+                <div class="search-input-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Mag-search ng kaibigan ayon sa pangalan, syudad, hilig, o bio..." oninput="applyFilters()">
+                </div>
+                <button type="button" class="btn-outline" onclick="clearSearch()">Clear</button>
+            </div>
+
             <div class="matching-hub">
                 <div>
                     <h3>⚡ Find New Friend Match</h3>
@@ -827,7 +733,6 @@
                 </div>
             </div>
 
-            <!-- Active Match Stage (Lumalabas kapag nag-click ng Find Friend) -->
             <div id="match-stage" class="match-stage hidden">
                 <p style="color: #34d399; font-size: 0.82rem; font-weight: 700; margin-bottom: 10px;">MATCHED FRIEND FOUND</p>
                 <div class="match-avatar-lg" id="matched-avatar">👤</div>
@@ -851,31 +756,6 @@
         </section>
     </div>
 
-    <!-- ================= 3. SOCIAL CONNECT MODAL ================= -->
-    <div id="social-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <strong id="social-modal-title">Ikonekta ang Account</strong>
-                <button onclick="closeSocialModal()" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;">✖</button>
-            </div>
-            <form onsubmit="confirmSocialConnect(event)" style="padding: 22px;">
-                <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 16px;">
-                    Ilagay ang detalye ng iyong account para magpatuloy sa KonekPH.
-                </p>
-                <div class="form-group">
-                    <label>Pangalan sa Account</label>
-                    <input type="text" id="social-name-input" placeholder="Hal. Mark Lawrence" required>
-                </div>
-                <div class="form-group">
-                    <label id="social-email-label">Email Address</label>
-                    <input type="email" id="social-email-input" placeholder="mark@gmail.com" required>
-                </div>
-                <button type="submit" id="social-submit-btn" class="btn-primary" style="width: 100%; margin-top: 8px;">Magpatuloy</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ================= 4. CHAT MODAL ================= -->
     <div id="chat-modal" class="modal-overlay hidden">
         <div class="modal-box" style="max-width: 500px;">
             <div class="modal-header">
@@ -893,7 +773,6 @@
         </div>
     </div>
 
-    <!-- ================= 5. VOICE CALL MODAL ================= -->
     <div id="call-modal" class="modal-overlay hidden">
         <div class="modal-box" style="max-width: 380px;">
             <div class="call-screen">
@@ -911,7 +790,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 KonekPH — Friendship, Chat & Voice Call Community.</p>
     </footer>
@@ -921,12 +799,9 @@
         let currentUser = null;
         let currentChatEmail = null;
         let currentTab = 'browse';
-        let activeSocialProvider = null;
-        let isLinkingFromDashboard = false;
         let currentMatchedUser = null;
         let matchCandidateIndex = 0;
 
-        // Voice Call Timer state
         let callInterval = null;
         let callSeconds = 0;
         let isMuted = false;
@@ -938,93 +813,6 @@
             }
         };
 
-        // ================= SOCIAL CONNECT =================
-        function openSocialModal(provider, fromDashboard = false) {
-            activeSocialProvider = provider;
-            isLinkingFromDashboard = fromDashboard;
-
-            document.getElementById('social-modal-title').textContent = `Magpatuloy gamit ang ${provider}`;
-            document.getElementById('social-email-label').textContent = provider === 'Google' ? 'Google Email (@gmail.com)' : 'Facebook Email';
-            document.getElementById('social-email-input').placeholder = provider === 'Google' ? 'pangalan@gmail.com' : 'pangalan@facebook.com';
-            
-            const submitBtn = document.getElementById('social-submit-btn');
-            submitBtn.textContent = fromDashboard ? `I-link ang ${provider}` : `Mag-Login gamit ang ${provider}`;
-            submitBtn.style.background = provider === 'Facebook' ? '#1877f2' : 'linear-gradient(45deg, #0284c7, #0d9488)';
-
-            if (fromDashboard && currentUser) {
-                document.getElementById('social-name-input').value = currentUser.name;
-                document.getElementById('social-email-input').value = currentUser.email;
-            } else {
-                document.getElementById('social-name-input').value = '';
-                document.getElementById('social-email-input').value = '';
-            }
-
-            document.getElementById('social-modal').classList.remove('hidden');
-        }
-
-        function closeSocialModal() {
-            document.getElementById('social-modal').classList.add('hidden');
-        }
-
-        function confirmSocialConnect(e) {
-            e.preventDefault();
-            const name = document.getElementById('social-name-input').value.trim();
-            const email = document.getElementById('social-email-input').value.trim().toLowerCase();
-            let users = JSON.parse(localStorage.getItem('konekUsers')) || [];
-
-            if (isLinkingFromDashboard && currentUser) {
-                if (activeSocialProvider === 'Google') currentUser.googleConnected = email;
-                if (activeSocialProvider === 'Facebook') currentUser.fbConnected = email;
-                saveCurrentUserUpdate();
-                closeSocialModal();
-                updateSocialLinkBadges();
-                return;
-            }
-
-            let existingUser = users.find(u => u.email === email);
-            if (existingUser) {
-                if (activeSocialProvider === 'Google') existingUser.googleConnected = email;
-                if (activeSocialProvider === 'Facebook') existingUser.fbConnected = email;
-                localStorage.setItem('konekUsers', JSON.stringify(users));
-                localStorage.setItem('konekUser', JSON.stringify(existingUser));
-                closeSocialModal();
-                loginSuccess(existingUser);
-            } else {
-                const newUser = {
-                    name,
-                    age: 20,
-                    city: 'Manila',
-                    interest: 'Gaming',
-                    bio: `Nakakonekta gamit ang ${activeSocialProvider}! Handang makipag-chat at call.`,
-                    email,
-                    password: '',
-                    photo: '',
-                    friends: [],
-                    googleConnected: activeSocialProvider === 'Google' ? email : null,
-                    fbConnected: activeSocialProvider === 'Facebook' ? email : null
-                };
-                users.push(newUser);
-                localStorage.setItem('konekUsers', JSON.stringify(users));
-                localStorage.setItem('konekUser', JSON.stringify(newUser));
-                closeSocialModal();
-                loginSuccess(newUser);
-            }
-        }
-
-        function updateSocialLinkBadges() {
-            const gEl = document.getElementById('google-link-status');
-            const fbEl = document.getElementById('fb-link-status');
-
-            gEl.innerHTML = currentUser.googleConnected
-                ? `<span class="status-pill status-connected">✓ Connected</span>`
-                : `<button class="status-pill status-connect-btn" onclick="openSocialModal('Google', true)">Ikonekta</button>`;
-
-            fbEl.innerHTML = currentUser.fbConnected
-                ? `<span class="status-pill status-connected">✓ Connected</span>`
-                : `<button class="status-pill status-connect-btn" onclick="openSocialModal('Facebook', true)">Ikonekta</button>`;
-        }
-
-        // ================= PHOTO UPLOAD =================
         function previewUploadImage(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -1058,7 +846,6 @@
             }
         }
 
-        // ================= AUTH =================
         function toggleAuthForm(type) {
             document.getElementById('register-form-box').classList.toggle('hidden', type !== 'register');
             document.getElementById('login-form-box').classList.toggle('hidden', type !== 'login');
@@ -1082,9 +869,7 @@
                 email: document.getElementById('reg-email').value.trim().toLowerCase(),
                 password: document.getElementById('reg-pass').value,
                 photo: uploadedPhotoBase64,
-                friends: [],
-                googleConnected: null,
-                fbConnected: null
+                friends: []
             };
 
             let users = JSON.parse(localStorage.getItem('konekUsers')) || [];
@@ -1138,7 +923,6 @@
                 document.getElementById('dash-pic-container').textContent = user.name.charAt(0).toUpperCase();
             }
 
-            updateSocialLinkBadges();
             applyFilters();
         }
 
@@ -1147,7 +931,6 @@
             location.reload();
         }
 
-        // ================= FIND FRIENDS MATCHING HUB =================
         function getOtherRealUsers() {
             const allUsers = JSON.parse(localStorage.getItem('konekUsers')) || [];
             return allUsers.filter(u => u.email !== currentUser.email);
@@ -1200,14 +983,13 @@
             updateMatchStageButtons();
         }
 
-        // ================= MEMBERS & FRIENDS GRID =================
         function renderProfiles(list) {
             const grid = document.getElementById('profiles-grid');
             if (list.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-state">
-                        <h3>Wala pang ibang naka-rehistrong miyembro</h3>
-                        <p>Mag-logout at gumawa ng pangalawang account para ma-test ang Find Friend, Chat, at Voice Call.</p>
+                        <h3>Walang tumugmang miyembro</h3>
+                        <p>Subukan baguhin ang search keyword o filter, o gumawa ng pangalawang account para ma-test ang Find Friend, Chat, at Voice Call.</p>
                     </div>
                 `;
                 return;
@@ -1219,15 +1001,9 @@
                     ? `<img src="${m.photo}" alt="${m.name}">` 
                     : `<span>${m.name.charAt(0).toUpperCase()}</span>`;
 
-                let badge = '';
-                if (m.googleConnected && m.fbConnected) badge = `<span class="verified-social-tag">✓ Google & FB</span>`;
-                else if (m.googleConnected) badge = `<span class="verified-social-tag">✓ Google</span>`;
-                else if (m.fbConnected) badge = `<span class="verified-social-tag">✓ Facebook</span>`;
-
                 return `
                     <div class="member-card">
                         <div class="member-banner">
-                            ${badge}
                             ${bannerContent}
                         </div>
                         <div class="member-body">
@@ -1251,6 +1027,7 @@
         function applyFilters() {
             const city = document.getElementById('filter-city').value;
             const interest = document.getElementById('filter-interest').value;
+            const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
             const otherUsers = getOtherRealUsers();
 
             let filtered = currentTab === 'friends' 
@@ -1260,7 +1037,25 @@
             if (city !== 'All') filtered = filtered.filter(m => m.city === city);
             if (interest !== 'All') filtered = filtered.filter(m => m.interest === interest);
 
+            if (searchQuery) {
+                filtered = filtered.filter(m => {
+                    const name = (m.name || '').toLowerCase();
+                    const mCity = (m.city || '').toLowerCase();
+                    const mInterest = (m.interest || '').toLowerCase();
+                    const bio = (m.bio || '').toLowerCase();
+                    return name.includes(searchQuery) ||
+                           mCity.includes(searchQuery) ||
+                           mInterest.includes(searchQuery) ||
+                           bio.includes(searchQuery);
+                });
+            }
+
             renderProfiles(filtered);
+        }
+
+        function clearSearch() {
+            document.getElementById('search-input').value = '';
+            applyFilters();
         }
 
         function toggleFriend(targetEmail) {
@@ -1282,7 +1077,6 @@
             applyFilters();
         }
 
-        // ================= REAL USER-TO-USER CHAT =================
         function getChatKey(email1, email2) {
             return 'konek_chat_' + [email1, email2].sort().join('_');
         }
@@ -1343,7 +1137,6 @@
             renderChatMessages();
         }
 
-        // ================= VOICE CALL SIMULATION =================
         function startVoiceCall(targetEmail) {
             const allUsers = JSON.parse(localStorage.getItem('konekUsers')) || [];
             const targetUser = allUsers.find(u => u.email === targetEmail);

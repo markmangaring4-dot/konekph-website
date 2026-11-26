@@ -271,43 +271,12 @@
             margin-bottom: 10px;
         }
 
-        /* Search Bar Box */
-        .search-bar-box {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .search-input-wrap {
-            position: relative;
-            flex: 1;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            color: #94a3b8;
-            font-size: 1rem;
-            pointer-events: none;
-        }
-
-        .search-input-wrap input {
-            padding-left: 40px;
-        }
-
         .matching-hub {
             background: linear-gradient(135deg, rgba(2, 132, 199, 0.22), rgba(13, 148, 136, 0.22));
             border: 1px solid #0284c7;
             border-radius: 12px;
             padding: 22px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -324,6 +293,23 @@
         .matching-hub p {
             color: #cbd5e1;
             font-size: 0.9rem;
+        }
+
+        .search-bar-box {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .search-bar-box input {
+            padding: 12px 16px;
+            background-color: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 10px;
+            font-size: 0.96rem;
+        }
+
+        .search-bar-box input:focus {
+            border-color: #38bdf8;
         }
 
         .match-stage {
@@ -405,7 +391,8 @@
             flex-direction: column;
         }
 
-        .member-body h4 { font-size: 1.2rem; margin-bottom: 4px; }
+        .member-body h4 { font-size: 1.2rem; margin-bottom: 2px; }
+        .member-handle { font-size: 0.82rem; color: #38bdf8; margin-bottom: 6px; font-weight: 600; }
         .member-loc { font-size: 0.85rem; color: #94a3b8; margin-bottom: 8px; }
         .member-bio { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 14px; flex: 1; }
 
@@ -567,18 +554,18 @@
     <main id="landing-page" class="landing-hero">
         <div class="hero-text">
             <h1>Maghanap ng Bagong Kaibigan, Ka-Chat, at Ka-Call sa <span>KonekPH</span></h1>
-            <p>Maghanap ng bagong kaibigan ayon sa hilig, makipag-chat nang direkta, at mag-voice call sa loob ng komunidad. Gumawa ng profile at magsimulang kumonekta.</p>
+            <p>Maghanap ng bagong kaibigan ayon sa pangalan, username, o hilig, makipag-chat nang direkta, at mag-voice call sa loob ng komunidad.</p>
             <div class="hero-stats">
-                <div class="stat"><h3>Find Friend</h3><p>Interest & Random Match</p></div>
-                <div class="stat"><h3>Search & Filter</h3><p>Mabilis na Paghahanap</p></div>
+                <div class="stat"><h3>Find Friend</h3><p>Search & Interest Match</p></div>
                 <div class="stat"><h3>Chat & Call</h3><p>Direct Friend Connect</p></div>
+                <div class="stat"><h3>Username</h3><p>Mabilis na Login</p></div>
             </div>
         </div>
 
         <div class="auth-box">
             <div id="register-form-box">
                 <h2>Gumawa ng Friend Profile</h2>
-                <p class="sub">Ipakilala ang sarili at ang mga hilig mo</p>
+                <p class="sub">Gumamit lang ng username at password para madali</p>
                 <div id="reg-msg" class="msg-box"></div>
 
                 <form onsubmit="handleRegister(event)">
@@ -597,6 +584,10 @@
                     <div class="form-group">
                         <label>Pangalan / Palayaw</label>
                         <input type="text" id="reg-name" placeholder="Hal. Liam Reyes" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="reg-username" placeholder="Hal. liam_reyes" required>
                     </div>
                     <div class="row-2">
                         <div class="form-group">
@@ -630,12 +621,8 @@
                         <input type="text" id="reg-bio" placeholder="Hanap ng ka-duo sa games o ka-kwentuhan" required>
                     </div>
                     <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="reg-email" placeholder="liam@example.com" required>
-                    </div>
-                    <div class="form-group">
                         <label>Password</label>
-                        <input type="password" id="reg-pass" minlength="6" placeholder="Gumawa ng password" required>
+                        <input type="password" id="reg-pass" minlength="4" placeholder="Gumawa ng password" required>
                     </div>
                     <button type="submit" class="btn-primary" style="width: 100%; margin-top: 6px;">Gumawa ng Profile</button>
                 </form>
@@ -646,13 +633,13 @@
 
             <div id="login-form-box" class="hidden">
                 <h2>Mag-Login sa Account</h2>
-                <p class="sub">Maligayang pagbabalik sa KonekPH</p>
+                <p class="sub">Ilagay ang iyong username at password</p>
                 <div id="login-msg" class="msg-box"></div>
 
                 <form onsubmit="handleLogin(event)">
                     <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="login-email" placeholder="liam@example.com" required>
+                        <label>Username</label>
+                        <input type="text" id="login-username" placeholder="Hal. liam_reyes" required>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
@@ -679,6 +666,7 @@
                 <input type="file" id="change-pic-input" accept="image/*" class="hidden" onchange="changeDashboardPhoto(event)">
 
                 <p><strong id="dash-name" style="font-size: 1.15rem;">Pangalan</strong>, <span id="dash-age">19</span></p>
+                <p id="dash-username" style="color: #38bdf8; font-size: 0.85rem; font-weight: 600;">@username</p>
                 <p id="dash-city" style="color: #94a3b8; font-size: 0.85rem; margin: 4px 0 8px;">📍 Manila</p>
                 <div><span class="interest-badge" id="dash-interest">Tech & Coding</span></div>
                 <p id="dash-bio" style="font-size: 0.88rem; color: #cbd5e1; font-style: italic;">"Bio ko..."</p>
@@ -713,15 +701,6 @@
         </aside>
 
         <section>
-            <!-- SEARCH BAR -->
-            <div class="search-bar-box">
-                <div class="search-input-wrap">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="search-input" placeholder="Mag-search ng kaibigan ayon sa pangalan, syudad, hilig, o bio..." oninput="applyFilters()">
-                </div>
-                <button type="button" class="btn-outline" onclick="clearSearch()">Clear</button>
-            </div>
-
             <div class="matching-hub">
                 <div>
                     <h3>⚡ Find New Friend Match</h3>
@@ -733,11 +712,15 @@
                 </div>
             </div>
 
+            <div class="search-bar-box">
+                <input type="text" id="search-friend-input" oninput="applyFilters()" placeholder="🔎 Mag-search ng kaibigan (pangalan, @username, syudad, o hilig)...">
+            </div>
+
             <div id="match-stage" class="match-stage hidden">
                 <p style="color: #34d399; font-size: 0.82rem; font-weight: 700; margin-bottom: 10px;">MATCHED FRIEND FOUND</p>
                 <div class="match-avatar-lg" id="matched-avatar">👤</div>
                 <h3 id="matched-name-age" style="font-size: 1.4rem;">Pangalan, 20</h3>
-                <p id="matched-meta" style="color: #94a3b8; font-size: 0.88rem; margin: 4px 0 10px;">📍 Manila • Gaming</p>
+                <p id="matched-meta" style="color: #94a3b8; font-size: 0.88rem; margin: 4px 0 10px;">@username • 📍 Manila • Gaming</p>
                 <p id="matched-bio" style="color: #e2e8f0; max-width: 480px; margin: 0 auto 18px; font-size: 0.92rem;"></p>
 
                 <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
@@ -797,7 +780,7 @@
     <script>
         let uploadedPhotoBase64 = "";
         let currentUser = null;
-        let currentChatEmail = null;
+        let currentChatUsername = null;
         let currentTab = 'browse';
         let currentMatchedUser = null;
         let matchCandidateIndex = 0;
@@ -808,10 +791,14 @@
 
         window.onload = function() {
             const savedUser = JSON.parse(localStorage.getItem('konekUser'));
-            if (savedUser) {
+            if (savedUser && savedUser.username) {
                 loginSuccess(savedUser);
             }
         };
+
+        function normalizeUsername(val) {
+            return (val || '').trim().toLowerCase().replace(/^@+/, '');
+        }
 
         function previewUploadImage(event) {
             const file = event.target.files[0];
@@ -839,7 +826,7 @@
         function saveCurrentUserUpdate() {
             localStorage.setItem('konekUser', JSON.stringify(currentUser));
             let users = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            const idx = users.findIndex(u => u.email === currentUser.email);
+            const idx = users.findIndex(u => normalizeUsername(u.username) === normalizeUsername(currentUser.username));
             if (idx !== -1) {
                 users[idx] = currentUser;
                 localStorage.setItem('konekUsers', JSON.stringify(users));
@@ -860,21 +847,27 @@
 
         function handleRegister(e) {
             e.preventDefault();
+            const username = normalizeUsername(document.getElementById('reg-username').value);
+            if (!username) {
+                showMessage('reg-msg', 'Maglagay ng valid na username.', 'error');
+                return;
+            }
+
             const user = {
                 name: document.getElementById('reg-name').value.trim(),
+                username: username,
                 age: document.getElementById('reg-age').value,
                 city: document.getElementById('reg-city').value,
                 interest: document.getElementById('reg-interest').value,
                 bio: document.getElementById('reg-bio').value.trim(),
-                email: document.getElementById('reg-email').value.trim().toLowerCase(),
                 password: document.getElementById('reg-pass').value,
                 photo: uploadedPhotoBase64,
                 friends: []
             };
 
             let users = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            if (users.some(u => u.email === user.email)) {
-                showMessage('reg-msg', 'Ginagamit na ang email na ito.', 'error');
+            if (users.some(u => normalizeUsername(u.username) === username)) {
+                showMessage('reg-msg', 'Ginagamit na ang username na ito. Pumili ng iba.', 'error');
                 return;
             }
 
@@ -886,18 +879,18 @@
 
         function handleLogin(e) {
             e.preventDefault();
-            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const username = normalizeUsername(document.getElementById('login-username').value);
             const pass = document.getElementById('login-pass').value;
 
             let users = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            const found = users.find(u => u.email === email && u.password === pass);
+            const found = users.find(u => normalizeUsername(u.username) === username && u.password === pass);
 
             if (found) {
                 if (!found.friends) found.friends = [];
                 localStorage.setItem('konekUser', JSON.stringify(found));
                 loginSuccess(found);
             } else {
-                showMessage('login-msg', 'Maling email o password.', 'error');
+                showMessage('login-msg', 'Maling username o password.', 'error');
             }
         }
 
@@ -912,6 +905,7 @@
 
             document.getElementById('dash-name').textContent = user.name;
             document.getElementById('dash-age').textContent = user.age;
+            document.getElementById('dash-username').textContent = `@${user.username}`;
             document.getElementById('dash-city').textContent = `📍 ${user.city}`;
             document.getElementById('dash-interest').textContent = user.interest || 'Community';
             document.getElementById('dash-bio').textContent = `"${user.bio}"`;
@@ -933,7 +927,7 @@
 
         function getOtherRealUsers() {
             const allUsers = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            return allUsers.filter(u => u.email !== currentUser.email);
+            return allUsers.filter(u => u.username && normalizeUsername(u.username) !== normalizeUsername(currentUser.username));
         }
 
         function findFriendMatch(byInterest) {
@@ -960,7 +954,7 @@
                 : currentMatchedUser.name.charAt(0).toUpperCase();
 
             document.getElementById('matched-name-age').textContent = `${currentMatchedUser.name}, ${currentMatchedUser.age}`;
-            document.getElementById('matched-meta').textContent = `📍 ${currentMatchedUser.city} • ${currentMatchedUser.interest || 'Community'}`;
+            document.getElementById('matched-meta').textContent = `@${currentMatchedUser.username} • 📍 ${currentMatchedUser.city} • ${currentMatchedUser.interest || 'Community'}`;
             document.getElementById('matched-bio').textContent = `"${currentMatchedUser.bio}"`;
 
             updateMatchStageButtons();
@@ -968,18 +962,19 @@
 
         function updateMatchStageButtons() {
             if (!currentMatchedUser) return;
-            const isFriend = currentUser.friends.includes(currentMatchedUser.email);
+            const targetUser = normalizeUsername(currentMatchedUser.username);
+            const isFriend = currentUser.friends.includes(targetUser);
             const addBtn = document.getElementById('matched-add-btn');
             addBtn.textContent = isFriend ? '✓ Kaibigan' : '+ Kaibigan';
             addBtn.className = isFriend ? 'btn-primary' : 'btn-outline';
 
-            document.getElementById('matched-chat-btn').onclick = () => openChatModal(currentMatchedUser.email);
-            document.getElementById('matched-call-btn').onclick = () => startVoiceCall(currentMatchedUser.email);
+            document.getElementById('matched-chat-btn').onclick = () => openChatModal(currentMatchedUser.username);
+            document.getElementById('matched-call-btn').onclick = () => startVoiceCall(currentMatchedUser.username);
         }
 
         function toggleFriendFromMatch() {
             if (!currentMatchedUser) return;
-            toggleFriend(currentMatchedUser.email);
+            toggleFriend(currentMatchedUser.username);
             updateMatchStageButtons();
         }
 
@@ -988,15 +983,16 @@
             if (list.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-state">
-                        <h3>Walang tumugmang miyembro</h3>
-                        <p>Subukan baguhin ang search keyword o filter, o gumawa ng pangalawang account para ma-test ang Find Friend, Chat, at Voice Call.</p>
+                        <h3>Walang tumugmang miyembro na nahanap</h3>
+                        <p>Subukang baguhin ang search keyword o filter, o gumawa ng pangalawang account para ma-test ang Find Friend, Chat, at Voice Call.</p>
                     </div>
                 `;
                 return;
             }
 
             grid.innerHTML = list.map(m => {
-                const isFriend = currentUser.friends.includes(m.email);
+                const uname = normalizeUsername(m.username);
+                const isFriend = currentUser.friends.includes(uname);
                 const bannerContent = m.photo 
                     ? `<img src="${m.photo}" alt="${m.name}">` 
                     : `<span>${m.name.charAt(0).toUpperCase()}</span>`;
@@ -1008,15 +1004,16 @@
                         </div>
                         <div class="member-body">
                             <h4>${m.name}, ${m.age}</h4>
+                            <div class="member-handle">@${uname}</div>
                             <div class="member-loc">📍 ${m.city}</div>
                             <div><span class="interest-badge">${m.interest || 'Community'}</span></div>
                             <p class="member-bio">${m.bio}</p>
                             <div class="card-actions">
-                                <button class="${isFriend ? 'btn-primary' : 'btn-outline'}" onclick="toggleFriend('${m.email}')">
+                                <button class="${isFriend ? 'btn-primary' : 'btn-outline'}" onclick="toggleFriend('${uname}')">
                                     ${isFriend ? '✓ Friend' : '+ Add'}
                                 </button>
-                                <button class="btn-primary" onclick="openChatModal('${m.email}')">💬 Chat</button>
-                                <button class="btn-call" onclick="startVoiceCall('${m.email}')">📞 Call</button>
+                                <button class="btn-primary" onclick="openChatModal('${uname}')">💬 Chat</button>
+                                <button class="btn-call" onclick="startVoiceCall('${uname}')">📞 Call</button>
                             </div>
                         </div>
                     </div>
@@ -1027,11 +1024,11 @@
         function applyFilters() {
             const city = document.getElementById('filter-city').value;
             const interest = document.getElementById('filter-interest').value;
-            const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            const searchQuery = normalizeUsername(document.getElementById('search-friend-input').value);
             const otherUsers = getOtherRealUsers();
 
             let filtered = currentTab === 'friends' 
-                ? otherUsers.filter(m => currentUser.friends.includes(m.email)) 
+                ? otherUsers.filter(m => currentUser.friends.includes(normalizeUsername(m.username))) 
                 : otherUsers;
 
             if (city !== 'All') filtered = filtered.filter(m => m.city === city);
@@ -1039,30 +1036,24 @@
 
             if (searchQuery) {
                 filtered = filtered.filter(m => {
-                    const name = (m.name || '').toLowerCase();
-                    const mCity = (m.city || '').toLowerCase();
-                    const mInterest = (m.interest || '').toLowerCase();
-                    const bio = (m.bio || '').toLowerCase();
-                    return name.includes(searchQuery) ||
-                           mCity.includes(searchQuery) ||
-                           mInterest.includes(searchQuery) ||
-                           bio.includes(searchQuery);
+                    const nameMatch = (m.name || '').toLowerCase().includes(searchQuery);
+                    const userMatch = normalizeUsername(m.username).includes(searchQuery);
+                    const cityMatch = (m.city || '').toLowerCase().includes(searchQuery);
+                    const interestMatch = (m.interest || '').toLowerCase().includes(searchQuery);
+                    const bioMatch = (m.bio || '').toLowerCase().includes(searchQuery);
+                    return nameMatch || userMatch || cityMatch || interestMatch || bioMatch;
                 });
             }
 
             renderProfiles(filtered);
         }
 
-        function clearSearch() {
-            document.getElementById('search-input').value = '';
-            applyFilters();
-        }
-
-        function toggleFriend(targetEmail) {
-            if (currentUser.friends.includes(targetEmail)) {
-                currentUser.friends = currentUser.friends.filter(e => e !== targetEmail);
+        function toggleFriend(targetUsername) {
+            const cleanTarget = normalizeUsername(targetUsername);
+            if (currentUser.friends.includes(cleanTarget)) {
+                currentUser.friends = currentUser.friends.filter(u => u !== cleanTarget);
             } else {
-                currentUser.friends.push(targetEmail);
+                currentUser.friends.push(cleanTarget);
             }
 
             saveCurrentUserUpdate();
@@ -1077,20 +1068,21 @@
             applyFilters();
         }
 
-        function getChatKey(email1, email2) {
-            return 'konek_chat_' + [email1, email2].sort().join('_');
+        function getChatKey(user1, user2) {
+            return 'konek_chat_' + [normalizeUsername(user1), normalizeUsername(user2)].sort().join('_');
         }
 
-        function openChatModal(targetEmail) {
+        function openChatModal(targetUsername) {
+            const cleanTarget = normalizeUsername(targetUsername);
             const allUsers = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            const targetUser = allUsers.find(u => u.email === targetEmail);
+            const targetUser = allUsers.find(u => normalizeUsername(u.username) === cleanTarget);
             if (!targetUser) return;
 
-            currentChatEmail = targetEmail;
-            document.getElementById('chat-title').textContent = `Chat kay ${targetUser.name}`;
+            currentChatUsername = cleanTarget;
+            document.getElementById('chat-title').textContent = `Chat kay ${targetUser.name} (@${cleanTarget})`;
             document.getElementById('chat-header-call-btn').onclick = () => {
                 closeChatModal();
-                startVoiceCall(targetEmail);
+                startVoiceCall(cleanTarget);
             };
             renderChatMessages();
             document.getElementById('chat-modal').classList.remove('hidden');
@@ -1098,12 +1090,12 @@
 
         function closeChatModal() {
             document.getElementById('chat-modal').classList.add('hidden');
-            currentChatEmail = null;
+            currentChatUsername = null;
         }
 
         function renderChatMessages() {
             const box = document.getElementById('chat-box');
-            const key = getChatKey(currentUser.email, currentChatEmail);
+            const key = getChatKey(currentUser.username, currentChatUsername);
             const msgs = JSON.parse(localStorage.getItem(key)) || [];
 
             if (msgs.length === 0) {
@@ -1111,8 +1103,9 @@
                 return;
             }
 
+            const me = normalizeUsername(currentUser.username);
             box.innerHTML = msgs.map(m => {
-                const side = m.sender === currentUser.email ? 'me' : 'them';
+                const side = normalizeUsername(m.sender) === me ? 'me' : 'them';
                 return `<div class="msg ${side}">${m.text}</div>`;
             }).join('');
             box.scrollTop = box.scrollHeight;
@@ -1122,13 +1115,13 @@
             e.preventDefault();
             const input = document.getElementById('chat-input');
             const text = input.value.trim();
-            if (!text || !currentChatEmail) return;
+            if (!text || !currentChatUsername) return;
 
-            const key = getChatKey(currentUser.email, currentChatEmail);
+            const key = getChatKey(currentUser.username, currentChatUsername);
             const msgs = JSON.parse(localStorage.getItem(key)) || [];
             
             msgs.push({
-                sender: currentUser.email,
+                sender: normalizeUsername(currentUser.username),
                 text: text
             });
 
@@ -1137,9 +1130,10 @@
             renderChatMessages();
         }
 
-        function startVoiceCall(targetEmail) {
+        function startVoiceCall(targetUsername) {
+            const cleanTarget = normalizeUsername(targetUsername);
             const allUsers = JSON.parse(localStorage.getItem('konekUsers')) || [];
-            const targetUser = allUsers.find(u => u.email === targetEmail);
+            const targetUser = allUsers.find(u => normalizeUsername(u.username) === cleanTarget);
             if (!targetUser) return;
 
             const avatarEl = document.getElementById('call-avatar');
@@ -1148,7 +1142,7 @@
                 : targetUser.name.charAt(0).toUpperCase();
 
             document.getElementById('call-partner-name').textContent = targetUser.name;
-            document.getElementById('call-partner-city').textContent = `📍 ${targetUser.city} • ${targetUser.interest || 'Friend'}`;
+            document.getElementById('call-partner-city').textContent = `@${cleanTarget} • 📍 ${targetUser.city}`;
             document.getElementById('call-status-label').textContent = 'Naka-konekta sa Voice Call';
 
             callSeconds = 0;
